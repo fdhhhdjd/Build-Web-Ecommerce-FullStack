@@ -15,8 +15,6 @@ export const DataProvider = ({ children }) => {
     if (firstLogin) {
       const refreshToken = async () => {
         const res = await axios.get("/user/refresh_token");
-        console.log(res, "token");
-        toast.success("Login Successfully 😍");
         setToken(res.data.accesstoken);
         setTimeout(() => {
           refreshToken();
@@ -25,6 +23,14 @@ export const DataProvider = ({ children }) => {
       refreshToken();
     }
   }, [callback]);
+  useEffect(() => {
+    const firstLogin = localStorage.getItem("firstLogin");
+    if (firstLogin) {
+      toast.success("Login Successfully 🥰");
+    } else {
+      toast.success("Logout Successfully 😊");
+    }
+  }, []);
   ProductApi();
   const data = {
     token: [token, setToken],

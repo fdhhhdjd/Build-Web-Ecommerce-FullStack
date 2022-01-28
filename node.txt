@@ -1,0 +1,8 @@
+npm i bcrypt cloudinary cookie-parser concurrently cors dotenv express express-fileupload jsonwebtoken mongoose
+npm i -D nodemon
+
++client:
+npm i react-router-dom axios react-paypal-express-checkout
+
+npm install --no-optional 
+npm i fsevents@latest -f --save-optional

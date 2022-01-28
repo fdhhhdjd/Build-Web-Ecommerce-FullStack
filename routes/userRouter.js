@@ -1,0 +1,24 @@
+const router = require("express").Router();
+const userCtrl = require("../Controllers/useCtrl");
+const Users = require("../models/userModle");
+const auth = require("../middleware/auth");
+const authAdmin = require("../middleware/authAdmin");
+// router.post("/register", (req, res) => {
+//   res.json({ message: "register" });
+// });
+router.post("/register", userCtrl.register);
+router.post("/login", userCtrl.login);
+router.get("/logout", userCtrl.logout);
+router.patch("/changePassword", auth, userCtrl.ChangePassword);
+router.post("/forget", userCtrl.forgetPasswordCustomer);
+router.put("/password/reset/:token", userCtrl.resetPassword);
+router.get("/profile", auth, userCtrl.profile);
+router.post("/loginGoogle", userCtrl.LoginGoogleCustomer);
+router.get("/infor", auth, userCtrl.getUser);
+router.patch("/profile/update", auth, userCtrl.updateProfile);
+router.get("/getuser", auth, authAdmin, userCtrl.getUserAll);
+router.get("/chart", auth, authAdmin, userCtrl.getUserChar);
+router.get("/refresh_token", userCtrl.refreshToken);
+router.patch("/addcart", auth, userCtrl.addCart);
+router.get("/history", auth, userCtrl.history);
+module.exports = router;

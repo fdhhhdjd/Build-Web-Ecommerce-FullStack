@@ -3,9 +3,6 @@ const userCtrl = require("../Controllers/useCtrl");
 const Users = require("../models/userModle");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
-// router.post("/register", (req, res) => {
-//   res.json({ message: "register" });
-// });
 router.post("/register", userCtrl.register);
 router.post("/login", userCtrl.login);
 router.get("/logout", userCtrl.logout);

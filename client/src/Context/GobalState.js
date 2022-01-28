@@ -27,8 +27,6 @@ export const DataProvider = ({ children }) => {
     const firstLogin = localStorage.getItem("firstLogin");
     if (firstLogin) {
       toast.success("Login Successfully 🥰");
-    } else {
-      toast.success("Logout Successfully 😊");
     }
   }, []);
   ProductApi();

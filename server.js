@@ -20,7 +20,7 @@ app.use("/api", require("./routes/categoryRouter"));
 app.use("/api", require("./routes/upload"));
 app.use("/api", require("./routes/ProductRouter"));
 app.use("/api", require("./routes/paymentRoute"));
-app.get("/", (req, res) => {
+app.get("/main", (req, res) => {
   res.json({ message: "Welcome to Tai heo Fa" });
 });
 

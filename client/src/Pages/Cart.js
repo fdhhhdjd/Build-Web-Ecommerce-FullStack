@@ -49,16 +49,28 @@ const Cart = () => {
     setCart([...cart]);
     addToCart(cart);
   };
-  const removeProduct = (id) => {
-    if (window.confirm("Do you want to delete this product ?")) {
-      cart.forEach((item, index) => {
-        if (item._id === id) {
-          cart.splice(index, 1);
-        }
-      });
-      setCart([...cart]);
-      addToCart(cart);
-    }
+  const removeProduct = async (id) => {
+    return await swal({
+      title: "Are you sure you want delete ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        cart.forEach((item, index) => {
+          if (item._id === id) {
+            cart.splice(index, 1);
+          }
+        });
+        setCart([...cart]);
+        addToCart(cart);
+        swal("Delete Car successfully !", {
+          icon: "success",
+        });
+      } else {
+        swal("Thank you for 😆'!");
+      }
+    });
   };
 
   const tranSuccess = async (payment) => {
@@ -75,7 +87,7 @@ const Cart = () => {
     setCart([]);
     addToCart([]);
     swal("You have successfully placed an order.", {
-      icon: "Success",
+      icon: "success",
     });
     console.log(payment);
   };
